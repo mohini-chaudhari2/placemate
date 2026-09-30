@@ -1,0 +1,609 @@
+.recruiter-calendar-page {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.recruiter-calendar-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.recruiter-calendar-header h1 {
+    margin: 0.35rem 0 0.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    color: var(--text);
+}
+
+.recruiter-calendar-header p {
+    margin: 0;
+    max-width: 700px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.recruiter-calendar-back {
+    display: inline-flex;
+    margin-bottom: 0.7rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.recruiter-calendar-back:hover {
+    text-decoration: underline;
+}
+
+.recruiter-calendar-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.recruiter-calendar-header-actions .btn,
+.recruiter-calendar-empty .btn {
+    border: 0;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.recruiter-calendar-header-actions .btn-primary,
+.recruiter-calendar-empty .btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.recruiter-calendar-header-actions .btn-secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.recruiter-calendar-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.recruiter-calendar-summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 1.2rem 1.3rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.recruiter-calendar-summary-card span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.recruiter-calendar-summary-card strong {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 1.9rem;
+    color: var(--text);
+}
+
+.recruiter-calendar-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.8fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.recruiter-calendar-card,
+.recruiter-calendar-sidebar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.recruiter-calendar-card {
+    overflow: hidden;
+}
+
+.recruiter-calendar-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.4rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.recruiter-calendar-toolbar h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: var(--text);
+}
+
+.recruiter-calendar-toolbar p {
+    margin: 0.3rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.recruiter-calendar-navigation {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.recruiter-calendar-navigation button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.recruiter-calendar-navigation button:hover {
+    transform: translateY(-2px);
+    background: var(--surface-alt);
+    border-color: var(--primary);
+}
+
+.recruiter-calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-alt);
+}
+
+.recruiter-calendar-weekday {
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.recruiter-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.recruiter-calendar-day {
+    position: relative;
+    min-height: 135px;
+    padding: 0.7rem;
+    border: 0;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    text-align: left;
+    color: var(--text);
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.recruiter-calendar-day:nth-child(7n) {
+    border-right: 0;
+}
+
+.recruiter-calendar-day:hover {
+    background: var(--surface-alt);
+}
+
+.recruiter-calendar-day.outside-month {
+    background: rgba(148, 163, 184, 0.045);
+    color: var(--text-muted);
+}
+
+.recruiter-calendar-day.is-selected {
+    box-shadow:
+        inset 0 0 0 2px var(--primary),
+        inset 0 0 25px rgba(99, 102, 241, 0.05);
+}
+
+.calendar-day-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.recruiter-calendar-day.is-today .calendar-day-number {
+    background: var(--primary);
+    color: #fff;
+}
+
+.calendar-day-count {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.calendar-day-events {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.55rem;
+}
+
+.calendar-event {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 7px;
+    padding: 0.35rem 0.45rem;
+    color: var(--text);
+    font-size: 0.68rem;
+    font-weight: 650;
+    line-height: 1.25;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.calendar-event strong {
+    font-weight: 850;
+}
+
+.calendar-event.scheduled,
+.calendar-status.scheduled {
+    background: rgba(59, 130, 246, 0.12);
+    color: #1d4ed8;
+}
+
+.calendar-event.rescheduled,
+.calendar-status.rescheduled {
+    background: rgba(245, 158, 11, 0.14);
+    color: #b45309;
+}
+
+.calendar-event.completed,
+.calendar-status.completed {
+    background: rgba(16, 185, 129, 0.13);
+    color: #047857;
+}
+
+.calendar-event.cancelled,
+.calendar-status.cancelled {
+    background: rgba(239, 68, 68, 0.12);
+    color: #b91c1c;
+}
+
+.calendar-more {
+    color: var(--primary);
+    font-size: 0.68rem;
+    font-weight: 800;
+}
+
+.recruiter-calendar-legend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.recruiter-calendar-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.legend-dot.scheduled {
+    background: #3b82f6;
+}
+
+.legend-dot.rescheduled {
+    background: #f59e0b;
+}
+
+.legend-dot.completed {
+    background: #10b981;
+}
+
+.legend-dot.cancelled {
+    background: #ef4444;
+}
+
+.recruiter-calendar-sidebar {
+    padding: 1.35rem;
+    position: sticky;
+    top: 1rem;
+}
+
+.recruiter-calendar-selected-header {
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.recruiter-calendar-selected-header h2 {
+    margin: 0.3rem 0;
+    font-size: 1.25rem;
+    color: var(--text);
+}
+
+.recruiter-calendar-selected-header p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-size: 0.88rem;
+}
+
+.recruiter-calendar-day-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 1rem;
+}
+
+.recruiter-calendar-interview-card {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface-alt);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.recruiter-calendar-interview-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.35);
+    box-shadow: var(--shadow-sm);
+}
+
+.calendar-interview-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.calendar-interview-time {
+    color: var(--text);
+    font-size: 0.84rem;
+    font-weight: 850;
+}
+
+.calendar-status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.67rem;
+    font-weight: 850;
+}
+
+.recruiter-calendar-interview-card h3 {
+    margin: 0.8rem 0 0.15rem;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.calendar-interview-email {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+}
+
+.calendar-interview-job {
+    margin: 0.55rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.calendar-interview-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+}
+
+.calendar-interview-meta span {
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.calendar-manage-button {
+    width: 100%;
+    margin-top: 0.85rem;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.65rem 0.8rem;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.calendar-manage-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+}
+
+.recruiter-calendar-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.recruiter-calendar-empty>div {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: var(--surface-alt);
+    font-size: 1.6rem;
+}
+
+.recruiter-calendar-empty h3 {
+    margin: 1rem 0 0.35rem;
+    color: var(--text);
+}
+
+.recruiter-calendar-empty p {
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-size: 0.86rem;
+}
+
+@media (max-width: 1100px) {
+    .recruiter-calendar-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .recruiter-calendar-sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 850px) {
+    .recruiter-calendar-page {
+        padding: 1.25rem;
+    }
+
+    .recruiter-calendar-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .recruiter-calendar-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recruiter-calendar-day {
+        min-height: 105px;
+        padding: 0.5rem;
+    }
+
+    .calendar-event {
+        font-size: 0.62rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .recruiter-calendar-page {
+        padding: 1rem;
+    }
+
+    .recruiter-calendar-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .recruiter-calendar-summary-card {
+        padding: 1rem;
+    }
+
+    .recruiter-calendar-summary-card strong {
+        font-size: 1.5rem;
+    }
+
+    .recruiter-calendar-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .recruiter-calendar-weekday {
+        padding: 0.6rem 0.2rem;
+        font-size: 0.63rem;
+    }
+
+    .recruiter-calendar-day {
+        min-height: 82px;
+        padding: 0.35rem;
+    }
+
+    .calendar-day-number {
+        min-width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+    }
+
+    .calendar-day-count {
+        display: none;
+    }
+
+    .calendar-event {
+        padding: 0.25rem 0.3rem;
+        font-size: 0.56rem;
+    }
+
+    .calendar-event strong {
+        display: block;
+    }
+
+    .recruiter-calendar-legend {
+        gap: 0.65rem;
+    }
+
+    .recruiter-calendar-header-actions {
+        width: 100%;
+    }
+
+    .recruiter-calendar-header-actions .btn {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .recruiter-calendar-navigation button,
+    .recruiter-calendar-interview-card,
+    .calendar-manage-button {
+        transition: none;
+    }
+}

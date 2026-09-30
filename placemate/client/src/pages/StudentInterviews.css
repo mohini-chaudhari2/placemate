@@ -1,0 +1,488 @@
+/* ---------- Student Interviews Page ---------- */
+
+.student-interviews-page {
+    min-height: 100vh;
+    padding: 32px 20px 60px;
+    background:
+        radial-gradient(circle at top left, rgba(99, 102, 241, 0.08), transparent 32%),
+        #f8fafc;
+}
+
+.student-interviews-container {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+}
+
+.student-interviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.student-interviews-kicker {
+    display: inline-block;
+    margin-bottom: 7px;
+    color: #6366f1;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.student-interviews-header h1 {
+    margin: 0 0 8px;
+    color: #0f172a;
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.1;
+}
+
+.student-interviews-header p {
+    max-width: 650px;
+    margin: 0;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ---------- Summary ---------- */
+
+.student-interview-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.student-interview-summary-card {
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+}
+
+.student-interview-summary-card span {
+    display: block;
+    margin-bottom: 7px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.student-interview-summary-card strong {
+    display: block;
+    color: #0f172a;
+    font-size: 30px;
+    line-height: 1;
+}
+
+/* ---------- Sections ---------- */
+
+.student-interview-section {
+    margin-top: 32px;
+}
+
+.student-interview-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.student-interview-section-header h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 22px;
+}
+
+.student-interview-section-count {
+    display: inline-flex;
+    min-width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+/* ---------- Interview List ---------- */
+
+.student-interviews-list {
+    display: grid;
+    gap: 18px;
+}
+
+.student-interview-card {
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    background: #F8F7FF;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.06);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.student-interview-card:hover {
+    transform: translateY(-2px);
+    border-color: #c7d2fe;
+    box-shadow: 0 16px 45px rgba(15, 23, 42, 0.09);
+}
+
+.student-interview-card.is-upcoming {
+    border-color: #c7d2fe;
+}
+
+.student-interview-card.is-upcoming::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: #6366f1;
+}
+
+.student-interview-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.student-interview-eyebrow {
+    display: block;
+    margin-bottom: 7px;
+    color: #6366f1;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.student-interview-card h3 {
+    margin: 0 0 5px;
+    color: #0f172a;
+    font-size: 20px;
+}
+
+.student-interview-company {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ---------- Status ---------- */
+
+.student-interview-status {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 11px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.student-interview-status.scheduled {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.student-interview-status.rescheduled {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.student-interview-status.cancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.student-interview-status.completed {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+/* ---------- Countdown ---------- */
+
+.student-interview-countdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 1px solid #ddd6fe;
+    border-radius: 14px;
+    background: #f5f3ff;
+}
+
+.student-interview-countdown span {
+    color: #6d28d9;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.student-interview-countdown strong {
+    color: #4c1d95;
+    font-size: 18px;
+}
+
+/* ---------- Details ---------- */
+
+.student-interview-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.student-interview-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 14px;
+    border: 1px solid #eef2f7;
+    border-radius: 13px;
+    background: #f8fafc;
+}
+
+.student-interview-detail__icon {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #F8F7FF;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.student-interview-detail small {
+    display: block;
+    margin-bottom: 4px;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.student-interview-detail strong {
+    display: block;
+    color: #334155;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.student-interview-detail div>span {
+    display: block;
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 11px;
+    word-break: break-word;
+}
+
+/* ---------- Instructions ---------- */
+
+.student-interview-instructions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    background: #F8F7FF;
+}
+
+.student-interview-instructions>span {
+    flex-shrink: 0;
+}
+
+.student-interview-instructions strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #334155;
+    font-size: 12px;
+}
+
+.student-interview-instructions p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+
+/* ---------- Actions ---------- */
+
+.student-interview-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.student-interview-actions .btn {
+    min-width: 130px;
+}
+
+/* ---------- Empty State ---------- */
+
+.student-interviews-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 24px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.72);
+    text-align: center;
+}
+
+.student-interviews-empty.compact {
+    padding: 38px 24px;
+}
+
+.student-interviews-empty__icon {
+    display: flex;
+    width: 58px;
+    height: 58px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    border-radius: 18px;
+    background: #eef2ff;
+    font-size: 25px;
+}
+
+.student-interviews-empty h3 {
+    margin: 0 0 7px;
+    color: #0f172a;
+    font-size: 18px;
+}
+
+.student-interviews-empty p {
+    max-width: 470px;
+    margin: 0 0 18px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ---------- Loading ---------- */
+
+.student-interviews-loading {
+    display: grid;
+    gap: 18px;
+}
+
+.student-interview-skeleton {
+    height: 300px;
+    border-radius: 20px;
+    background:
+        linear-gradient(90deg,
+            #f1f5f9 25%,
+            #e2e8f0 37%,
+            #f1f5f9 63%);
+    background-size: 400% 100%;
+    animation: studentInterviewSkeleton 1.4s ease infinite;
+}
+
+@keyframes studentInterviewSkeleton {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* ---------- Error ---------- */
+
+.student-interviews-error {
+    padding: 28px;
+    border: 1px solid #fecaca;
+    border-radius: 18px;
+    background: #F8F7FF;
+    text-align: center;
+}
+
+.student-interviews-error strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #991b1b;
+    font-size: 17px;
+}
+
+.student-interviews-error p {
+    margin: 0 0 18px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 800px) {
+    .student-interviews-header {
+        flex-direction: column;
+    }
+
+    .student-interview-summary {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .student-interview-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .student-interviews-page {
+        padding: 22px 12px 40px;
+    }
+
+    .student-interview-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .student-interview-card {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .student-interview-card__top {
+        flex-direction: column;
+    }
+
+    .student-interview-status {
+        align-self: flex-start;
+    }
+
+    .student-interview-countdown {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .student-interview-actions {
+        flex-direction: column;
+    }
+
+    .student-interview-actions .btn {
+        width: 100%;
+    }
+}

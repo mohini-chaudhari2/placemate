@@ -1,0 +1,505 @@
+/* =====================================================
+   PlaceMate Navbar
+   Standalone styles for Navbar.jsx
+   ===================================================== */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: #EAE7FF;
+    border-bottom: 1px solid rgba(67,56,202,0.12);
+    box-shadow: 0 4px 18px rgba(49,46,129,0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.navbar-container {
+    width: min(1280px, calc(100% - 40px));
+    min-height: 72px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.navbar-logo {
+    flex: 0 0 auto;
+    color: var(--pm-primary);
+    text-decoration: none;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+.navbar-links {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.navbar-links>a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: var(--pm-text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.18s ease, background 0.18s ease;
+}
+
+.navbar-links>a:hover {
+    color: var(--pm-primary-2);
+    background: var(--pm-bg-secondary);
+}
+
+.navbar-links>a.active {
+    background: #DDD6FE;
+    color: #312E81;
+    box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.1);
+}
+
+.navbar-actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-dashboard,
+.navbar-login,
+.navbar-register,
+.navbar-logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.navbar-dashboard {
+    color: var(--pm-text);
+    background: var(--pm-bg);
+    border: 1px solid var(--pm-border);
+}
+
+.navbar-dashboard:hover {
+    background: var(--pm-surface-soft);
+    transform: translateY(-1px);
+}
+
+.navbar-login {
+    color: var(--pm-text-muted);
+    border: 1px solid var(--pm-border);
+    background: var(--pm-surface);
+}
+
+.navbar-login:hover {
+    background: #f8fafc;
+}
+
+.navbar-register {
+    color: #fff;
+    background: #4f46e5;
+    border: 1px solid #4f46e5;
+}
+
+.navbar-register:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+.navbar-logout {
+    border: 1px solid #e2e8f0;
+    background: #F8F7FF;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.navbar-logout:hover {
+    color: #dc2626;
+    border-color: #fecaca;
+    background: #fff7f7;
+}
+
+.navbar-user-name {
+    max-width: 150px;
+    overflow: hidden;
+    color: #172033;
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =====================================================
+   Notification center
+   ===================================================== */
+
+.navbar-notification-center {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-notification-trigger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 8px 11px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #64748b;
+    font: inherit;
+    font-size: 0.91rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.18s ease, background 0.18s ease;
+}
+
+.navbar-notification-trigger:hover,
+.navbar-notification-trigger.is-open {
+    color: #4338ca;
+    background: #eef2ff;
+}
+
+.navbar-notification-bell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.navbar-notification-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+/* Compact dropdown. It must stay below the bell, not over the page. */
+.navbar-notification-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 2000;
+    width: 360px;
+    max-width: calc(100vw - 24px);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: var(--pm-surface);
+    color: #172033;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16);
+}
+
+.navbar-notification-panel::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    right: 22px;
+    width: 13px;
+    height: 13px;
+    background: #F8F7FF;
+    border-left: 1px solid #e2e8f0;
+    border-top: 1px solid #e2e8f0;
+    transform: rotate(45deg);
+}
+
+.navbar-notification-panel-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #F8F7FF;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.navbar-notification-eyebrow {
+    display: block;
+    margin-bottom: 2px;
+    color: #6366f1;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.navbar-notification-panel-header h3 {
+    margin: 0;
+    color: #172033;
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.navbar-notification-unread {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 0.66rem;
+    font-weight: 800;
+}
+
+.navbar-notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.navbar-notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    background: #F8F7FF;
+    transition: background 0.16s ease;
+}
+
+.navbar-notification-item:last-child {
+    border-bottom: 0;
+}
+
+.navbar-notification-item:hover {
+    background: #f8fafc;
+}
+
+.navbar-notification-item.is-unread {
+    background: #f7f8ff;
+}
+
+.navbar-notification-item-icon {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #eef2ff;
+    font-size: 0.92rem;
+}
+
+.navbar-notification-item-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.navbar-notification-item-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.navbar-notification-item-heading h4 {
+    margin: 0;
+    color: #172033;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.navbar-notification-item-heading span {
+    flex: 0 0 auto;
+    color: #94a3b8;
+    font-size: 0.62rem;
+    white-space: nowrap;
+}
+
+.navbar-notification-item-content p {
+    margin: 3px 0 0;
+    color: #64748b;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navbar-notification-panel-footer {
+    padding: 10px;
+    background: #fafbff;
+    border-top: 1px solid #eef2f7;
+}
+
+.navbar-notification-view-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 36px;
+    padding: 7px 10px;
+    border-radius: 9px;
+    background: #eef2ff;
+    color: #4f46e5 !important;
+    font-size: 0.73rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.navbar-notification-view-all:hover {
+    background: #e0e7ff;
+    transform: translateY(-1px);
+}
+
+.navbar-notification-state {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    text-align: center;
+}
+
+.navbar-notification-state h4 {
+    margin: 8px 0 3px;
+    color: #172033;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.navbar-notification-state p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.7rem;
+}
+
+.navbar-notification-empty-icon {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: #eef2ff;
+    font-size: 1.05rem;
+}
+
+.navbar-notification-spinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid #e0e7ff;
+    border-top-color: #4f46e5;
+    border-radius: 50%;
+    animation: navbar-notification-spin 0.75s linear infinite;
+}
+
+@keyframes navbar-notification-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1050px) {
+
+    .navbar-links>a,
+    .navbar-notification-trigger {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .navbar-container {
+        width: min(100% - 24px, 1280px);
+        gap: 10px;
+    }
+
+    .navbar-user-name {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .navbar-links>a:nth-child(2),
+    .navbar-links>a:nth-child(3) {
+        display: none;
+    }
+
+    .navbar-notification-label {
+        display: none;
+    }
+
+    .navbar-notification-trigger {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar-container {
+        min-height: 64px;
+        width: calc(100% - 20px);
+    }
+
+    .navbar-logo {
+        font-size: 1.2rem;
+    }
+
+    .navbar-actions .navbar-dashboard,
+    .navbar-actions .navbar-logout {
+        display: none;
+    }
+
+    .navbar-notification-panel {
+        position: fixed;
+        top: 70px;
+        right: 10px;
+        width: min(360px, calc(100vw - 20px));
+        max-width: none;
+    }
+
+    .navbar-notification-panel::before {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-notification-spinner {
+        animation: none;
+    }
+
+    .navbar-notification-trigger,
+    .navbar-notification-view-all,
+    .navbar-dashboard,
+    .navbar-login,
+    .navbar-register,
+    .navbar-logout {
+        transition: none;
+    }
+}
